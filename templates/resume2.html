@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis Result</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Poppins',sans-serif;
+        }
+
+        body{
+            background:linear-gradient(135deg,#0f172a,#1e3a8a);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            padding:40px;
+        }
+
+        .container{
+
+            width:850px;
+            background:#fff;
+            border-radius:15px;
+            padding:35px;
+            box-shadow:0 15px 30px rgba(0,0,0,0.25);
+
+        }
+
+        h1{
+
+            text-align:center;
+            color:#1e3a8a;
+            margin-bottom:30px;
+
+        }
+
+        .grid{
+
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+
+        }
+
+        .card{
+
+            background:#f8f9ff;
+            border-left:5px solid #2563eb;
+            padding:20px;
+            border-radius:10px;
+
+        }
+
+        .card h3{
+
+            color:#1e3a8a;
+            margin-bottom:10px;
+
+        }
+
+        .card p{
+
+            color:#444;
+            font-size:18px;
+
+        }
+
+        .skills{
+
+            margin-top:30px;
+
+        }
+
+        .tag{
+
+            display:inline-block;
+            background:#2563eb;
+            color:white;
+            padding:8px 15px;
+            border-radius:20px;
+            margin:6px;
+            font-size:14px;
+
+        }
+
+        .recommendation{
+
+            margin-top:30px;
+            background:#eef6ff;
+            border-left:5px solid #22c55e;
+            padding:20px;
+            border-radius:10px;
+
+        }
+
+        .recommendation h3{
+
+            color:#166534;
+            margin-bottom:10px;
+
+        }
+
+        .recommendation p{
+
+            color:#444;
+
+        }
+
+        .btn{
+
+            display:block;
+            width:250px;
+            margin:35px auto 0;
+            text-align:center;
+            text-decoration:none;
+            background:#2563eb;
+            color:white;
+            padding:15px;
+            border-radius:8px;
+            font-size:18px;
+            transition:.3s;
+
+        }
+
+        .btn:hover{
+
+            background:#1d4ed8;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Resume Analysis Report</h1>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>📄 Uploaded Resume</h3>
+
+<p>{{ filename }}</p>
+
+</div>
+
+<div class="card">
+
+<h3>🎯 Predicted Role</h3>
+
+<p><strong>{{ prediction }}</strong></p>
+
+</div>
+
+<div class="card">
+
+<h3>📊 Confidence</h3>
+
+<p>{{ confidence }}%</p>
+
+</div>
+
+<div class="card">
+
+<h3>✅ Status</h3>
+
+<p>Resume Successfully Analyzed</p>
+
+</div>
+
+</div>
+
+<!-- <div class="skills">
+
+<h3 style="color:#1e3a8a;">🛠 Extracted Skills</h3>
+
+<span class="tag">Python</span>
+<span class="tag">SQL</span>
+<span class="tag">Machine Learning</span>
+<span class="tag">Flask</span>
+<span class="tag">TensorFlow</span>
+<span class="tag">Git</span>
+<span class="tag">Power BI</span>
+
+</div> -->
+
+<div class="skills">
+
+<h3 style="color:#1e3a8a;">🛠 Extracted Skills</h3>
+
+{% if skills %}
+    {% for skill in skills %}
+        <span class="tag">{{ skill }}</span>
+    {% endfor %}
+{% else %}
+    <p>No skills detected.</p>
+{% endif %}
+
+</div>
+
+<div class="recommendation">
+
+<h3>💡 Recommendation</h3>
+
+<p>
+
+Your resume is a strong match for the
+<strong>{{ prediction }}</strong> role.
+Continue improving cloud technologies, deployment,
+and advanced ML concepts to strengthen your profile.
+
+</p>
+
+</div>
+
+<a href="/" class="btn">
+
+Analyze Another Resume
+
+</a>
+
+</div>
+
+</body>
+
+</html>
